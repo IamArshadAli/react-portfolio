@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/IamArshadAli/react-portfolio/static/css/main.073c9b0a.css",
+    "main.js": "/IamArshadAli/react-portfolio/static/js/main.14c01d1c.js",
+    "static/js/787.1ed0c42c.chunk.js": "/IamArshadAli/react-portfolio/static/js/787.1ed0c42c.chunk.js",
+    "service-worker.js": "/IamArshadAli/react-portfolio/service-worker.js",
+    "static/media/ak-logo-dark.svg": "/IamArshadAli/react-portfolio/static/media/ak-logo-dark.bdb42a88aa8264df4685d88df8d7672a.svg",
+    "index.html": "/IamArshadAli/react-portfolio/index.html",
+    "main.073c9b0a.css.map": "/IamArshadAli/react-portfolio/static/css/main.073c9b0a.css.map",
+    "main.14c01d1c.js.map": "/IamArshadAli/react-portfolio/static/js/main.14c01d1c.js.map",
+    "787.1ed0c42c.chunk.js.map": "/IamArshadAli/react-portfolio/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.14c01d1c.js"
+  ]
+}
