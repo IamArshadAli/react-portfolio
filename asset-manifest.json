@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/react-portfolio/static/css/main.073c9b0a.css",
-    "main.js": "/react-portfolio/static/js/main.029eef5c.js",
+    "main.css": "/react-portfolio/static/css/main.fbfcb162.css",
+    "main.js": "/react-portfolio/static/js/main.b5c918a2.js",
     "static/js/787.1ed0c42c.chunk.js": "/react-portfolio/static/js/787.1ed0c42c.chunk.js",
+    "static/media/u-said-it-v13-1167.mp3": "/react-portfolio/static/media/u-said-it-v13-1167.becd66496be9c81ddf9d.mp3",
+    "static/media/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg": "/react-portfolio/static/media/patrick-tomasso-Oaqk7qqNh_c-unsplash.8ca90014fb6ce5980110.jpg",
+    "static/media/spaceman.png": "/react-portfolio/static/media/spaceman.5ec7fcfa9a803ead726c.png",
     "service-worker.js": "/react-portfolio/service-worker.js",
-    "static/media/ak-logo-dark.svg": "/react-portfolio/static/media/ak-logo-dark.bdb42a88aa8264df4685d88df8d7672a.svg",
+    "static/media/profile-ak.svg": "/react-portfolio/static/media/profile-ak.64dfc52bde82558d2f751d0108b8189d.svg",
     "index.html": "/react-portfolio/index.html",
-    "main.073c9b0a.css.map": "/react-portfolio/static/css/main.073c9b0a.css.map",
-    "main.029eef5c.js.map": "/react-portfolio/static/js/main.029eef5c.js.map",
+    "main.fbfcb162.css.map": "/react-portfolio/static/css/main.fbfcb162.css.map",
+    "main.b5c918a2.js.map": "/react-portfolio/static/js/main.b5c918a2.js.map",
     "787.1ed0c42c.chunk.js.map": "/react-portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.029eef5c.js"
+    "static/css/main.fbfcb162.css",
+    "static/js/main.b5c918a2.js"
   ]
 }
