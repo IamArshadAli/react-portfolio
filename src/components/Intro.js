@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import Me from "../assets/svg/profile-ak.svg";
+import Typewriter from "typewriter-effect";
+import { NavLink } from "react-router-dom";
 
 const Box = styled(motion.div)`
   position: absolute;
@@ -9,7 +11,7 @@ const Box = styled(motion.div)`
   top: 50%;
   transform: translate(-50%, -50%);
 
-  width: 65vw;
+  width: 75vw;
   height: 55vh;
   display: flex;
 
@@ -31,7 +33,7 @@ const Box = styled(motion.div)`
   border-right: 2px solid ${(props) => props.theme.text};
 
   z-index: 1;
-  
+
   @media (max-width: 1023px) {
     flex-direction: column;
 
@@ -39,14 +41,20 @@ const Box = styled(motion.div)`
     border-left-width: initial;
     border-right-color: initial;
     border-left-color: initial;
-    background: linear-gradient(rgb(252, 246, 244) 50%, rgb(0, 0, 0) 50%) 0px 0px / 2px 100% no-repeat,
-      linear-gradient(rgb(252, 246, 244) 50%, rgb(0, 0, 0) 50%) 100% 0px;
+    background: linear-gradient(rgb(252, 246, 244) 50%, rgb(0, 0, 0) 50%) 0px
+        0px / 2px 100% no-repeat,
+      linear-gradient(rgb(252, 246, 244) 50%, rgb(0, 0, 0) 50%) 100% 0px / 2px
+        100% no-repeat;
     border-style: solid none;
     border-image: initial;
     border-top: 2px solid rgb(252, 246, 244);
     border-bottom: 2px solid rgb(0, 0, 0);
     background-position: 0px 0px, 100% 0px;
     background-repeat: no-repeat;
+  }
+
+  @media (max-width:599px) {
+    width: 70vw;
   }
 `;
 const SubBox = styled.div`
@@ -62,7 +70,7 @@ const SubBox = styled.div`
     width: 96%;
     height: auto;
   }
-  
+
   @media (max-width: 1023px) {
     width: 100%;
     height: 50%;
@@ -76,7 +84,6 @@ const Text = styled.div`
   font-size: calc(1em + 1.5vw);
   color: ${(props) => props.theme.body};
   padding: 2rem;
-  cursor: pointer;
 
   display: flex;
   flex-direction: column;
@@ -100,7 +107,30 @@ const Intro = (props) => {
         <Text props={props}>
           <h1>Hi,</h1>
           <h3>I'm Arshad Ali.</h3>
-          <h6>I design and code simple yet beautiful websites.</h6>
+          <h6>
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter.changeDelay(40).pauseFor(1500)
+                  .typeString(
+                    "I'm a Dynamic IT Professional Driving Business Growth and Success with <span style='color:white;'>Web Development,</span>"
+                  ).changeDeleteSpeed(18).changeDelay(60)
+                  .pauseFor(1000)
+                  .deleteChars(16)
+                  .typeString("<span style='color:white;'>Access Development,</span>")
+                  .pauseFor(700)
+                  .deleteChars(19)
+                  .typeString("<span style='color:white;'>Graphics Designing,</span>")
+                  .pauseFor(600)
+                  .deleteChars(19)
+                  .typeString("<span style='color:white;'>Excel, and Freelancing.</span>")
+                  .pauseFor(500)
+                  .deleteChars(23)
+                  .changeDelay('natural')
+                  .typeString("<span style='color:white;'>Dynamic IT Solutions!</span>")
+                  .start();
+              }}
+            />
+          </h6>
         </Text>
       </SubBox>
       <SubBox>
@@ -109,7 +139,9 @@ const Intro = (props) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 2 }}
         >
-          <img className="pic" src={Me} alt="Profile Pic" />
+          <NavLink to="/about">
+            <img className="pic" src={Me} alt="Profile Pic" />
+          </NavLink>
         </motion.div>
       </SubBox>
     </Box>

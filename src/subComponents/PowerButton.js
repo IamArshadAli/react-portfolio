@@ -35,13 +35,19 @@ cursor: pointer;
     text-decoration: none;
     color: inherit;
 }
+
+@media (max-width:40em) {
+    width: 2rem;
+    height: 2rem;
+}
 `
 
 const PowerButton = () => {
+    const btnSize = window.innerWidth > 1023 ? 30 : window.innerWidth < 545 ? 25 : 15;
     return (
         <Power>
         <NavLink to="/">
-        <PowerBtn width={30} height={30} fill='currentColor' />
+        <PowerBtn width={btnSize} height={btnSize} fill='currentColor' />
         </NavLink>
         </Power>
     )

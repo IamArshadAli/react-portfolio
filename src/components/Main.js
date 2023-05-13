@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import LogoComponent from "../subComponents/LogoComponent";
-import PowerButton from "../subComponents/PowerButton";
+// import PowerButton from "../subComponents/PowerButton";
 import SocialIcons from "../subComponents/SocialIcons";
 import { YinYang } from "./AllSvgs";
 import Intro from "./Intro";
+
+import InfoDark from "../assets/svg/square-info-dark.svg";
+import InfoLight from "../assets/svg/square-info-light.svg";
 
 const MainContainer = styled.div`
   background: ${(props) => props.theme.body};
@@ -24,39 +27,60 @@ const MainContainer = styled.div`
     font-family: "Karla", sans-serif;
     font-weight: 500;
   }
+
+  @media (max-width: 40em) {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 1.2em;
+    }
+  }
 `;
 
 const Container = styled.div`
   padding: 2rem;
 `;
 
-const Contact = styled.a`
+const Resume = styled.a`
   color: ${(props) => props.theme.text};
   position: absolute;
   top: 2rem;
   right: calc(1rem + 2vw);
   text-decoration: none;
   z-index: 1;
+  @media (max-width: 1023px) {
+    color: ${(props) => props.theme.body};
+  }
 `;
-const BLOG = styled(NavLink)`
-  color: ${(props) => props.theme.text};
-  position: absolute;
-  top: 50%;
-  right: calc(1rem + 2vw);
-  transform: rotate(90deg) translate(-50%, -50%);
-  text-decoration: none;
-  z-index: 1;
-`;
-const WORK = styled(NavLink)`
-  color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
+// const BLOG = styled(NavLink)`
+//   color: ${(props) => props.theme.text};
+//   position: absolute;
+//   top: 50%;
+//   right: calc(1rem + 2vw);
+//   transform: rotate(90deg) translate(-50%, -50%);
+//   text-decoration: none;
+//   z-index: 1;
+//   @media (max-width: 1023px) {
+//     color: ${(props) => props.theme.body};
+//     text-shadow: rgb(0, 0, 0) 0px 0px 4px;
+//   }
+// `;
+// const WORK = styled(NavLink)`
+//   color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
 
-  position: absolute;
-  top: 50%;
-  left: calc(1rem + 2vw);
-  transform: translate(-50%, -50%) rotate(-90deg);
-  text-decoration: none;
-  z-index: 1;
-`;
+//   position: absolute;
+//   top: 50%;
+//   left: calc(1rem + 2vw);
+//   transform: translate(-50%, -50%) rotate(-90deg);
+//   text-decoration: none;
+//   z-index: 1;
+
+//   @media (max-width: 1023px) {
+//     text-shadow: rgb(0, 0, 0) 0px 0px 4px;
+//   }
+// `;
 
 const BottomBar = styled.div`
   position: absolute;
@@ -73,8 +97,12 @@ const ABOUT = styled(NavLink)`
   color: ${(props) => (props.click ? props.theme.body : props.theme.text)};
   text-decoration: none;
   z-index: 1;
+
+  @media (max-width: 1023px) {
+    color: ${(props) => props.theme.text};
+  }
 `;
-const SKILLS = styled(NavLink)`
+const Projects = styled(NavLink)`
   color: ${(props) => props.theme.text};
   text-decoration: none;
   z-index: 1;
@@ -114,6 +142,10 @@ const Center = styled.button`
     display: ${(props) => (props.click ? "none" : "inline-block")};
     padding-top: 1rem;
   }
+
+  @media (max-width: 599px) {
+    top: ${(props) => (props.click ? "90%" : "50%")};
+  }
 `;
 
 const DarkDiv = styled.div`
@@ -126,12 +158,12 @@ const DarkDiv = styled.div`
   height: ${(props) => (props.click ? "100%" : "0%")};
   z-index: 1;
   transition: height 0.5s ease, width 1s ease 0.5s;
-  
+
   @media (max-width: 1023px) {
-      width: ${(props) => (props.click ? "100%" : "0%")};
-      height: ${(props) => (props.click ? "50%" : "0%")};
-      right: 0;
-      transition: width 0.5s ease 0s, height 1s ease 0.5s;
+    width: ${(props) => (props.click ? "100%" : "0%")};
+    height: ${(props) => (props.click ? "50%" : "0%")};
+    right: 0;
+    transition: width 0.5s ease 0s, height 1s ease 0.5s;
   }
 `;
 
@@ -139,30 +171,66 @@ const Main = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
-
+  const [screenSize, setScreenSize] = useState("");
   useEffect(() => {
     setTimeout(handleClick, 1300);
+    function handleResize() {
+      const width = window.innerWidth;
+      if (width < 600) {
+        setScreenSize("mobile");
+      } else if (width >= 600 && width < 960) {
+        setScreenSize("tablet");
+      } else {
+        setScreenSize("desktop");
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // mobile & click = 50
+  // mobile & !click = 80
+  // tablet & click = 80
+  // tablet & !click = 120
+  // desktop & click = 120
+  // desktop & !click = 200
+
+  const yinYangSize =
+    screenSize === "mobile"
+      ? click
+        ? 50
+        : 80
+      : screenSize === "tablet"
+      ? click
+        ? 80
+        : 120
+      : click
+      ? 120
+      : 200;
 
   return (
     <MainContainer>
       <DarkDiv click={click} />
       <Container>
-        <PowerButton />
+        {/* <PowerButton /> */}
         <LogoComponent theme={click ? "dark" : "light"} />
-        <SocialIcons theme={click ? "dark" : "light"} />
+        <SocialIcons
+          theme={screenSize == "desktop" && click ? "dark" : "light"}
+        />
 
         <Center click={click}>
           <YinYang
             onClick={() => handleClick()}
-            width={click ? 120 : 200}
-            height={click ? 120 : 200}
+            width={yinYangSize}
+            height={yinYangSize}
             fill="currentColor"
           />
           <span>click here</span>
         </Center>
 
-        <Contact target="_blank" href="mailto:arshadalikaldane@gmail.com">
+        <Resume target="_blank" href="https://resume.io/r/AL0ZXzLR5">
           <motion.h2
             initial={{
               y: -200,
@@ -175,10 +243,10 @@ const Main = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            Say Hi..
+            RESUME
           </motion.h2>
-        </Contact>
-        <BLOG to="/blog">
+        </Resume>
+        {/* <BLOG to="/blog">
           <motion.h2
             initial={{
               y: -200,
@@ -198,36 +266,37 @@ const Main = () => {
           <motion.h2
             initial={{
               y: -200,
-              transition: { type: "spring", duration: 1.5, delay: 1 },
+              transition: { type: "spring", duration: 1.5, delay: 2 },
             }}
             animate={{
               y: 0,
-              transition: { type: "spring", duration: 1.5, delay: 1 },
+              transition: { type: "spring", duration: 1.5, delay: 2 },
             }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
             Work
           </motion.h2>
-        </WORK>
+        </WORK> */}
         <BottomBar>
           <ABOUT to="/about" click={+click}>
             <motion.h2
               initial={{
                 y: 200,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
+                transition: { type: "spring", duration: 1.5, delay: 2 },
               }}
               animate={{
                 y: 0,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
+                transition: { type: "spring", duration: 1.5, delay: 2 },
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              About.
+              ABOUT
+              {/* <img src={window.innerWidth < 1023 ? InfoDark : InfoLight} /> */}
             </motion.h2>
           </ABOUT>
-          <SKILLS to="/skills">
+          <Projects to="/projects">
             <motion.h2
               initial={{
                 y: 200,
@@ -240,9 +309,9 @@ const Main = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              My Skills.
+              PROJECTS
             </motion.h2>
-          </SKILLS>
+          </Projects>
         </BottomBar>
       </Container>
       {click ? <Intro click={click} /> : null}

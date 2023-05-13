@@ -82,7 +82,7 @@ ul,p{
 }
 `
 
-const MySkillsPage = () => {
+const ProjectsPage = () => {
     return (
         <ThemeProvider theme={lightTheme}>
 <Box>
@@ -151,4 +151,4 @@ VScode, Github, Codepen etc.
     )
 }
 
-export default MySkillsPage
+export default ProjectsPage
