@@ -7,9 +7,7 @@ import LogoComponent from "../subComponents/LogoComponent";
 import SocialIcons from "../subComponents/SocialIcons";
 import { YinYang } from "./AllSvgs";
 import Intro from "./Intro";
-
-import InfoDark from "../assets/svg/square-info-dark.svg";
-import InfoLight from "../assets/svg/square-info-light.svg";
+import TransitionEffect from "./TransitionEffect";
 
 const MainContainer = styled.div`
   background: ${(props) => props.theme.body};
@@ -26,6 +24,7 @@ const MainContainer = styled.div`
   h6 {
     font-family: "Karla", sans-serif;
     font-weight: 500;
+    font-size: 1.5em;
   }
 
   @media (max-width: 40em) {
@@ -212,6 +211,7 @@ const Main = () => {
 
   return (
     <MainContainer>
+      <TransitionEffect />
       <DarkDiv click={click} />
       <Container>
         {/* <PowerButton /> */}
@@ -227,7 +227,7 @@ const Main = () => {
             height={yinYangSize}
             fill="currentColor"
           />
-          <span>click here</span>
+          <span></span>
         </Center>
 
         <Resume target="_blank" href="https://resume.io/r/AL0ZXzLR5">
@@ -293,18 +293,17 @@ const Main = () => {
               whileTap={{ scale: 0.9 }}
             >
               ABOUT
-              {/* <img src={window.innerWidth < 1023 ? InfoDark : InfoLight} /> */}
             </motion.h2>
           </ABOUT>
           <Projects to="/projects">
             <motion.h2
               initial={{
                 y: 200,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
+                transition: { type: "spring", duration: 1.5, delay: 1.2 },
               }}
               animate={{
                 y: 0,
-                transition: { type: "spring", duration: 1.5, delay: 1 },
+                transition: { type: "spring", duration: 1.5, delay: 1.2 },
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

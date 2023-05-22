@@ -31,6 +31,10 @@ const LogoComponent = (props) => {
           y: 0,
           transition: { type: "spring", duration: 1.5, delay: 2.3 },
         }}
+        exit={{
+          y: -200,
+          transition: { type: "spring", duration: 0.5 },
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
              >

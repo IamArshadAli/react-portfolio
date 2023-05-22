@@ -74,9 +74,6 @@ const SubBox = styled.div`
   @media (max-width: 1023px) {
     width: 100%;
     height: 50%;
-    .pic {
-      width: 75%;
-    }
   }
 `;
 
@@ -94,19 +91,26 @@ const Text = styled.div`
     font-size: calc(0.5rem + 1.5vw);
     font-weight: 300;
   }
+
+  @media (max-width: 40em) {
+    padding: 1.5rem;
+    & > *:last-child {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const Intro = (props) => {
   return (
     <Box
       initial={{ height: 0 }}
-      animate={{ height: window.innerWidth > 1023 ? "55vh" : "70vh" }}
+      animate={{ height: window.innerWidth > 1023 ? "60vh" : "75vh" }}
       transition={{ type: "spring", duration: 2, delay: 1 }}
     >
       <SubBox>
         <Text props={props}>
-          <h1>Hi,</h1>
-          <h3>I'm Arshad Ali.</h3>
+          <h3 style={{textTransform:'uppercase'}}>Transformative Web Solutions</h3>
+          <span>Hi, I'm Arshad Ali.</span>
           <h6>
             <Typewriter
               onInit={(typewriter) => {

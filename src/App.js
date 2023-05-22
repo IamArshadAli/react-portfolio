@@ -10,6 +10,8 @@ import AboutPage from "./components/AboutPage";
 import BlogPage from "./components/BlogPage";
 import WorkPage from "./components/WorkPage";
 import ProjectsPage from "./components/ProjectsPage";
+import TransitionEffect from "./components/TransitionEffect";
+import { Education, Experience, Skills } from "./subComponents/AboutComponents";
 // import SoundBar from "./subComponents/SoundBar";
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
 
       <ThemeProvider theme={lightTheme}>
         {/* <SoundBar /> */}
+        <TransitionEffect />
 
         {/* For framer-motion animation on page change! */}
         {/* Changed prop from exitBefore to mode */}
